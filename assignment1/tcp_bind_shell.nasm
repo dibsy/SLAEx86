@@ -26,7 +26,7 @@ _start:
 
 	mov al,0x66
 	mov bl,1
-	push 0
+	push ecx  ;push 0
 	push 0x1
 	push 0x2
 	mov ecx,esp ; ecx proints to top of the stack
