@@ -18,14 +18,16 @@ int main(int argc, char *argv[]){
 	if(argc!=2){
 		printf("\nUsage : ./IP_ADDRESS PORT_NUMBER");
 		exit(1);
-	}
+ 	}
 	
 	if((he=gethostbyname(argv[1])) == NULL){
 		printf("\nCould not resolve  IP");
+		exit(1);
 	}
 
-	if((sockfd = socket(AF_INET,SOCK_STREAM,0)) == -1){
+	if((sockfd = socket(AF_INET,SOCK_STREAM,0)) < 0){
 		printf("\nSocket Error");
+		exit(1);
 	}
 	
 	their_addr.sin_family = AF_INET;
