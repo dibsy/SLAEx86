@@ -1,3 +1,6 @@
+// Reference : http://beej.us/net2/html/clientserver.html#simpleclient
+// Modified by Dibyendu
+
 #include<stdio.h>
 #include<sys/types.h>
 #include<sys/socket.h>
