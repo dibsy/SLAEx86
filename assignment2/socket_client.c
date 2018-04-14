@@ -15,7 +15,7 @@ int main(int argc, char *argv[]){
 	struct hostent *he;
 	struct sockaddr_in their_addr;
 
-	if(argc!=2){
+	if(argc!=3){
 		printf("\nUsage : ./IP_ADDRESS PORT_NUMBER");
 		exit(1);
  	}
@@ -31,9 +31,10 @@ int main(int argc, char *argv[]){
 	}
 	
 	their_addr.sin_family = AF_INET;
-	their_addr.sin_port = htons(PORT);
+	their_addr.sin_port = htons(atoi(argv[2]));
 	//their_addr.sin_addr = *((struct in_addr *)he ->h_addr);
-	their_addr.sin_addr = *((struct in_addr *)he->h_addr);
+	//their_addr.sin_addr = *((struct in_addr *)he->h_addr);
+	their_addr.sin_addr.s_addr = inet_addr(argv[1]);
 	memset(&(their_addr.sin_zero),'\0',8);
 
 	if(connect(sockfd, (struct sockaddr *)&their_addr, sizeof(struct sockaddr)) == -1){
