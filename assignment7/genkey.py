@@ -1,18 +1,20 @@
 """
-The concept of genkey
-1. Add the original shellcode to the script
-2. Add any random passcode , but keep it shorter or equal to the length of the shellcode
-3. Fixed character will be added to passcode if the length is lesser than size of shellcode
-4. Copy the shellcode to an array
-5. Copy the key to an array
-6. Copy the shellcode to another array, called cipher( we will overwrite this array)
-7. For each element in shellcode XOR for each element in key , and store them in the cipher array
-8. prints the xorkey
-9. prints the encrypted shellcode
-10. Copy the shellcode and put in in one C file to execute the shellcode
-11. Implement the logic inside the code to take argument of key from commandline
-12. Repace each shellcode content with ( for each element of encrypted shellcode XOR for each element of key )
-13. Compile and run and pass the passcode during executiton of the program
+genkey.py
+
+Add the original shellcode to the script
+Add any random passcode , but keep it shorter or equal to the length of the shellcode
+Fixed character will be added to passcode if the length is lesser than size of shellcode and it will be the key
+Copy the shellcode to an array
+Copy the key to an array
+Copy the shellcode to another array, called cipher( we will overwrite this array)
+For each element in shellcode XOR  each element in key , and store them in the cipher array
+Run the program and obtain the xorkey and the encrypted_shellcode
+
+assignment7.c
+Copy the encrypted_shellcode and put in in one standard C file that executes shellcode
+Implement the logic inside the C code to take argument of key from command line
+Repace each element of encrypted_shellcode by the XOR of each element of encrypted shellcode and each corresponding element of key )
+Compile and run and pass the key during execution of the program
 """
 
 import sys
