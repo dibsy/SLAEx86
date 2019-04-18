@@ -1,0 +1,14 @@
+digraph G {
+	//rankdir=LR
+	node [fontname=Courier, labeljust=r];
+	 "0x9760818" [shape=box, label = "0x00417000 29C9                            sub ecx,ecx\l0x00417002 83E9E9                          sub ecx,0xffffffe9\l0x00417005 E8                              call 0x1\l0x00417009 FFC0                            inc eax\l0x0041700b 5E                              pop esi\l"]
+	 "0x9764ac8" [shape=box, label = "0x0041700c 81760EB7FCC59C                  xor dword [esi+0xe],0x9cc5fcb7\l"]
+	 "0x9764d38" [shape=box, label = "0x00417013 83EEFC                          sub esi,0xfffffffc\l"]
+	 "0x9762970" [shape=box, label = "0x00417016 E2                              loop 0x1\l"]
+	 "0x9762a70" [shape=box, label = "0x00417018 31C9                            xor ecx,ecx\l0x0041701a 89CB                            mov ebx,ecx\l0x0041701c 6A46                            push byte 0x46\l0x0041701e 58                              pop eax\l"]
+	 "0x9760818" -> "0x9764ac8" [style = bold ]
+	 "0x9764ac8" -> "0x9764d38" [style = bold, color=orange ]
+	 "0x9764d38" -> "0x9762970" [style = bold, color=orange ]
+	 "0x9762970" -> "0x9764ac8" [style = bold, color=orange ]
+	 "0x9762970" -> "0x9762a70" [style = bold ]
+}
