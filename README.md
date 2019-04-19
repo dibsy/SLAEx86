@@ -25,7 +25,14 @@ Poc using execve-stack as the shellcode to encode your schema and execute
 Take up at least 3 shellcode sample created using Msfpayload for linux/x86
 Use GDB/Ndisasm/Libemu to dissect the functionality of the shellcode
 Present your analysis
+```
+As msfpayload is outdate, all the payloads are created using msfvenom
+1. Analysis of linux/x86/adduser shellcode
+2. Analysis of linux/x86/chmod shellcode
+3. Analysis of linux/x86/exec shellcode
 
+Blog : https://oxhat.blogspot.com/2019/04/analyzing-shellcode.html
+```
 ### Assignment 6
 Take upto 3 shellcode from shell-storm and create a polymorphic versions of them to beat patten matching
 The polymorphic versions cannot be larger 150% of the existing shellcode
@@ -38,8 +45,8 @@ Bonus point for making it shorter in length than original
 Blog : https://oxhat.blogspot.com/2019/04/polymorphic-shellcodes.html
 ```
 ### Assignment 7
-Create a custom crypter like the one shown in "crypters" video
-Free to use any existing encryption schema
+Create a custom crypter like the one shown in "crypters" video.
+Free to use any existing encryption schema.
 Can use any programming language.
 ```
 1. Implemented a crypter with encrytion based on one time pad.
