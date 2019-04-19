@@ -3,9 +3,17 @@
 Create a Shell Bind TCP Shellcode
 - Binds to a port
 - Execs shell on incoming connection
+- Port number should be easily configurable
+```
+Implemeted the bind shell shellcode 
+Usage :
 
-Port number should be easily configurable
+In Victim Machine => ./bindshell 9999 
 
+Attacker Machine => nc 127.0.0.1 9999
+
+Blog : https://oxhat.blogspot.com/2018/04/coding-custom-tcp-bind-shell-shellcode.html
+```
 ### Assignment 2
 Create a Shell Reverse Tcp Shellcode
 - Reverse connect to configured IP and Port
