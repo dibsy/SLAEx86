@@ -40,7 +40,24 @@ Should be configurable for different payload
 ### Assignment 4
 Create a custom encoding scheme  like "Insertion Encoder" we showed you
 Poc using execve-stack as the shellcode to encode your schema and execute
+```
+Implemented a custom encoder where each shellcode value is xored and duplicated to generate the final shellcode
+Implemented a custom decoder to decode the encoded shellcode
 
+Usage:
+generating encoded shellcode 
+
+Put the shellcode inside the custom_insertion_encoder.py
+=> python custom_insertion_encoder.py
+
+decoding and executing
+copy and put the encoded shellcode inside the nasm file
+=> nasm custom_insertion_decoder.nasm -felf32 -o custom_insertion_decoder.o
+=> ld custom_insertion_decoder.o -o custom_insertion_decoder
+=> ./custom_insertion_decoder
+
+Blog : https://oxhat.blogspot.com/2019/04/coding-custom-insertion-encoder-and.html
+```
 ### Assignment 5
 Take up at least 3 shellcode sample created using Msfpayload for linux/x86
 Use GDB/Ndisasm/Libemu to dissect the functionality of the shellcode
