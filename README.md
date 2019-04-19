@@ -40,8 +40,9 @@ Implemented a crypter with encrytion based on one time pad.
 Blog : https://oxhat.blogspot.com/2019/04/coding-custom-crypter.html 
 ```
 ### Additional Assignments
-
-
+```
+Implemented a shellcode for chdir() 
+```
 ### Scripts
 ```
 1. Written an bash automation script to generate shellcode from binary
