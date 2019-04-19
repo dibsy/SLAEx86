@@ -30,18 +30,25 @@ Present your analysis
 Take upto 3 shellcode from shell-storm and create a polymorphic versions of them to beat patten matching
 The polymorphic versions cannot be larger 150% of the existing shellcode
 Bonus point for making it shorter in length than original
+```
+1. Implemented 2 polmorphic versions of exit() shellcode 
+2. Implmented polymorphic version of cat /etc/password shellcode
+3. Implemented a polymorphic and obfuscated version of commandline netcat 
 
+Blog : https://oxhat.blogspot.com/2019/04/polymorphic-shellcodes.html
+```
 ### Assignment 7
 Create a custom crypter like the one shown in "crypters" video
 Free to use any existing encryption schema
 Can use any programming language.
 ```
 Implemented a crypter with encrytion based on one time pad.
+
 Blog : https://oxhat.blogspot.com/2019/04/coding-custom-crypter.html 
 ```
 ### Additional Assignments
 ```
-Implemented a shellcode for chdir() 
+1. Implemented a shellcode for chdir() 
 ```
 ### Scripts
 ```
