@@ -36,8 +36,8 @@ Blog : https://oxhat.blogspot.com/2019/04/analyzing-shellcode.html
 ```
 ### Assignment 6
 Take upto 3 shellcode from shell-storm and create a polymorphic versions of them to beat patten matching
-The polymorphic versions cannot be larger 150% of the existing shellcode
-Bonus point for making it shorter in length than original
+- The polymorphic versions cannot be larger 150% of the existing shellcode
+- Bonus point for making it shorter in length than original
 ```
 1. Implemented 2 polmorphic versions of exit() shellcode 
 2. Implmented polymorphic version of cat /etc/password shellcode
