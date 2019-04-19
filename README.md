@@ -42,7 +42,7 @@ Create a custom crypter like the one shown in "crypters" video
 Free to use any existing encryption schema
 Can use any programming language.
 ```
-Implemented a crypter with encrytion based on one time pad.
+1. Implemented a crypter with encrytion based on one time pad.
 
 Blog : https://oxhat.blogspot.com/2019/04/coding-custom-crypter.html 
 ```
