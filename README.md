@@ -117,6 +117,15 @@ Create a custom crypter like the one shown in "crypters" video.
 ```
 1. Implemented a crypter with encrytion based on one time pad.
 
+Usage:
+
+put the shellcode and passcode in genkey.py
+=> python genkey.py
+Copy the key
+copy the encrypted shellcode in the shellcode array in assignment7.c
+=> gcc assignment7.c -o crypter -zexecstack -fno-stack-protector
+=> ./crypter <KEY>
+
 Blog : https://oxhat.blogspot.com/2019/04/coding-custom-crypter.html 
 ```
 ### Additional Assignments
