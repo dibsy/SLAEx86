@@ -1,0 +1,6 @@
+digraph code {
+	graph [bgcolor=azure fontsize=8 fontname="Courier" splines="ortho"];
+	node [fillcolor=gray style=filled shape=box];
+	edge [arrowhead="normal"];
+	"0x08048080" [URL="entry0/0x08048080", fillcolor="palegreen",color="#7f7f7f", fontname="Courier",label=";-- section..text:\l;-- _start:\l;-- eip:\l(fcn) entry0 50\l  entry0 ();\l0x08048080      jmp loc.call_shellcode                                 ; [01] -r-x section size 110 named .text\l"]
+}
