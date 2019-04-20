@@ -40,12 +40,12 @@ Blog : https://oxhat.blogspot.com/2018/04/coding-custom-tcp-reverse-shell.html
 ```
 ### Assignment 3
 Study about Egg Hunter Shellcode
-Create a working demo of the Egg Hunter
-Should be configurable for different payload
+- Create a working demo of the Egg Hunter
+- Should be configurable for different payload
 
 ### Assignment 4
 Create a custom encoding scheme  like "Insertion Encoder" we showed you
-Poc using execve-stack as the shellcode to encode your schema and execute
+- Poc using execve-stack as the shellcode to encode your schema and execute
 ```
 Implemented a custom encoder where each shellcode value is xored and duplicated to generate the final shellcode
 Implemented a custom decoder to decode the encoded shellcode
@@ -66,8 +66,8 @@ Blog : https://oxhat.blogspot.com/2019/04/coding-custom-insertion-encoder-and.ht
 ```
 ### Assignment 5
 Take up at least 3 shellcode sample created using Msfpayload for linux/x86
-Use GDB/Ndisasm/Libemu to dissect the functionality of the shellcode
-Present your analysis
+- Use GDB/Ndisasm/Libemu to dissect the functionality of the shellcode
+- Present your analysis
 ```
 As msfpayload is outdate, all the payloads are created using msfvenom
 
