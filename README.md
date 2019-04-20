@@ -85,6 +85,16 @@ As msfpayload is outdate, all the payloads are created using msfvenom
 
 3. Analysis of linux/x86/exec shellcode
 
+Usage:
+
+Shellcode Generation:
+=> msfvenom --platform linux --arch x86 --payload linux/x86/adduser USER=slae PASS=slaeslae -i0 -f hex
+
+Shellcode Analysis
+=> echo -ne "Some shellcode \xaa\xbb" | ndisasm -u -
+=> echo -ne "Some shellcode \xaa\xbb" | /opt/libemu/bin/sctest -vvv -Ss 10000 -G image.dot
+=> dot image.dot -Tpng -o image.png
+
 Blog : https://oxhat.blogspot.com/2019/04/analyzing-shellcode.html
 ```
 ### Assignment 6
