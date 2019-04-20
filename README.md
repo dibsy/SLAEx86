@@ -116,10 +116,14 @@ Blog : https://oxhat.blogspot.com/2019/04/coding-custom-crypter.html
 ### Scripts
 ```
 1. Implmented a bash automation script to generate shellcode from binary
-usage: dump.sh binary
+usage: 
+
+=>dump.sh binary
 There is also an extended version of this inside the same directory.
 Sometimes the script does not dump all the shellcode properly so the extended version is used.
 
 2. Implemented an automation script to generate a C code with an embedded shellcode inside it.
-usage : python shellcode_template.py filename.c "\x41\x41\x41x\41"
+usage :
+
+=>python shellcode_template.py filename.c "\x41\x41\x41x\41"
 ```
