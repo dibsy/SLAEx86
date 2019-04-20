@@ -50,6 +50,7 @@ Open the  egghunter_c_wrapper.c and put the any shellcode in the shellcode array
 => ./egghunter_c_wrapper.o
 
 Blog : https://oxhat.blogspot.com/2019/04/egg-hunter-shellcode.html
+Additional Blog on how i exploited a bof using egg hunter : https://oxhat.blogspot.com/2018/04/why-do-we-need-egg-hunters.html
 ```
 ### Assignment 4
 Create a custom encoding scheme  like "Insertion Encoder" we showed you
