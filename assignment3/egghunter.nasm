@@ -1,7 +1,7 @@
 ;Author : Dibyendu Sikdar
 ;https://github.com/dibsy/SLAEx86/
 ;PA-1191
-;http://www.hick.org/code/skape/papers/win32-shellcode.pdf
+;http://www.hick.org/code/skape/papers/egghunt-shellcode.pdf
 
 
 global _start
